@@ -1,0 +1,26 @@
+[
+  {
+    "id": "equ-001",
+    "name": "Baari Training Gear #001",
+    "price": "Ksh 4,000",
+    "img": "images/equipments/equipments-001.jpg"
+  },
+  {
+    "id": "equ-002",
+    "name": "Baari Training Gear #002",
+    "price": "Ksh 4,000",
+    "img": "images/equipments/equipments-002.jpg"
+  },
+  {
+    "id": "equ-003",
+    "name": "Baari Training Gear #003",
+    "price": "Ksh 4,000",
+    "img": "images/equipments/equipments-003.jpg"
+  },
+  {
+    "id": "equ-004",
+    "name": "Baari Training Gear #004",
+    "price": "Ksh 4,000",
+    "img": "images/equipments/equipments-004.jpg"
+  }
+]
