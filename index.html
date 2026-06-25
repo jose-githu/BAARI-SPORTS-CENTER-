@@ -3,319 +3,578 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BAARI SPORTS CENTER — Digital Shelves · Kimana</title>
-
-  <!-- ── Google Fonts: Syne · DM Sans · DM Mono ── -->
+  <meta name="description" content="Baari Sports Center — Premium sports gear, custom kit printing, and elite boots in Kimana. Shop via WhatsApp." />
+  <title>Baari Sports Center | Elite Sports Gear</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-
   <!-- ═══════════════════════════════════════════
        NAVIGATION
   ═══════════════════════════════════════════ -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-
-      <!-- Logo -->
-      <a class="nav__logo" href="index.html" aria-label="Baari Sports Center — Home">
-        <div class="nav__logo-mark">BSC</div>
-        <div class="nav__logo-text">
-          <span class="nav__logo-name">BAARI SPORTS CENTER</span>
-          <span class="nav__logo-loc">Digital Shelves · Kimana</span>
-        </div>
+  <header class="site-header" id="top">
+    <nav class="nav-inner">
+      <a href="#top" class="nav-brand">
+        <span class="brand-mark">BSC</span>
+        <span class="brand-name">Baari Sports Center</span>
       </a>
-
-      <!-- Desktop links -->
-      <nav class="nav__links" aria-label="Primary navigation">
-        <a class="nav__link nav__link--active" href="index.html">Our Story</a>
-        <a class="nav__link" href="catalogue.html">Shop Catalogue</a>
-      </nav>
-
-      <!-- Actions -->
-      <div class="nav__actions">
-        <button class="nav__cart-btn" id="cartTrigger" aria-label="Open kit bag">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-            <line x1="3" y1="6" x2="21" y2="6"/>
-            <path d="M16 10a4 4 0 01-8 0"/>
-          </svg>
-          <span class="nav__cart-count" id="cartBadge">0</span>
-        </button>
-
-        <button class="nav__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-
+      <ul class="nav-links" role="list">
+        <li><a href="#boots" class="nav-link">Boots</a></li>
+        <li><a href="#kits" class="nav-link">Kits</a></li>
+        <li><a href="#gear" class="nav-link">Gear</a></li>
+        <li>
+          <a
+            href="https://wa.me/c/254702453813"
+            class="nav-cta"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Shop Now</a>
+        </li>
+      </ul>
+      <button class="nav-hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="nav-mobile-drawer" id="mobileDrawer" aria-hidden="true">
+      <a href="#boots" class="drawer-link">Boots</a>
+      <a href="#kits" class="drawer-link">Kits</a>
+      <a href="#gear" class="drawer-link">Gear</a>
+      <a href="https://wa.me/c/254702453813" class="drawer-link drawer-link--cta" target="_blank" rel="noopener noreferrer">Shop WhatsApp Catalog →</a>
     </div>
   </header>
 
-  <!-- Mobile nav overlay -->
-  <div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <button class="mobile-nav__close" id="mobileNavClose" aria-label="Close menu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-    <a class="mobile-nav__link mobile-nav__link--active" href="index.html">Our Story</a>
-    <a class="mobile-nav__link" href="catalogue.html">Shop Catalogue</a>
-  </div>
+  <main>
 
-
-  <!-- ═══════════════════════════════════════════
-       PAGE HERO — EDITORIAL
-  ═══════════════════════════════════════════ -->
-  <section class="page-hero" id="hero">
-    <div class="page-hero__inner">
-
-      <!-- Eyebrow label -->
-      <div class="page-hero__label">
-        <span class="pulse-dot" aria-hidden="true"></span>
-        <span>Kimana Town · M-Pesa Ready · Ships Fast</span>
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section class="hero" aria-label="Hero showcase">
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-eyebrow">Kimana's Premier Sports Destination</p>
+        <h1 class="hero-headline">
+          Gear Built<br />
+          <em>for the Game.</em>
+        </h1>
+        <p class="hero-sub">
+          Elite boots, custom club kits, and pro-grade equipment — curated for serious athletes and Sunday warriors alike.
+        </p>
+        <div class="hero-actions">
+          <a
+            href="https://wa.me/c/254702453813"
+            class="btn btn--primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+            Explore Full WhatsApp Catalog
+          </a>
+          <a
+            href="#boots"
+            class="btn btn--ghost"
+          >View Showroom ↓</a>
+        </div>
       </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-img-frame">
+          <img
+            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&q=80"
+            alt="Premium sports boot hero"
+            loading="eager"
+            class="hero-img"
+          />
+          <div class="hero-img-badge">New Season Drop</div>
+        </div>
+      </div>
+    </section>
 
-      <!-- Headline -->
-      <h1 class="page-hero__title" aria-label="Stadium Grade Kits">
-        <span class="page-hero__title-line">STADIUM</span>
-        <span class="page-hero__title-line">GRADE</span>
-        <span class="page-hero__title-line page-hero__title-line--accent">KITS.</span>
-      </h1>
-
-      <!-- Descriptor -->
-      <p class="page-hero__desc">
-        Custom jerseys. Elite match-day kits. Official-grade training gear.<br />
-        Add to cart — checkout on WhatsApp in seconds.
-      </p>
-
+    <!-- ═══════════════════════════════════════════
+         TICKER
+    ═══════════════════════════════════════════ -->
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Elite Boots</span>
+        <span class="ticker-dot">✦</span>
+        <span>Custom Kit Printing</span>
+        <span class="ticker-dot">✦</span>
+        <span>Group Orders Welcome</span>
+        <span class="ticker-dot">✦</span>
+        <span>Size Consultation Available</span>
+        <span class="ticker-dot">✦</span>
+        <span>Pro Equipment</span>
+        <span class="ticker-dot">✦</span>
+        <span>Fast WhatsApp Checkout</span>
+        <span class="ticker-dot">✦</span>
+        <span>Elite Boots</span>
+        <span class="ticker-dot">✦</span>
+        <span>Custom Kit Printing</span>
+        <span class="ticker-dot">✦</span>
+        <span>Group Orders Welcome</span>
+        <span class="ticker-dot">✦</span>
+        <span>Size Consultation Available</span>
+        <span class="ticker-dot">✦</span>
+        <span>Pro Equipment</span>
+        <span class="ticker-dot">✦</span>
+        <span>Fast WhatsApp Checkout</span>
+        <span class="ticker-dot">✦</span>
+      </div>
     </div>
 
-    <span class="page-hero__scroll-hint" aria-hidden="true">Scroll to explore</span>
-  </section>
+    <!-- ═══════════════════════════════════════════
+         SECTION: ELITE BOOTS
+    ═══════════════════════════════════════════ -->
+    <section class="showroom-section" id="boots" aria-labelledby="boots-heading">
+      <div class="section-header">
+        <p class="section-eyebrow">Category 01</p>
+        <h2 class="section-title" id="boots-heading">Elite Boots</h2>
+        <p class="section-desc">From firm ground to artificial turf — performance boots for every surface and every level.</p>
+      </div>
+      <div class="product-grid">
 
-
-  <!-- ═══════════════════════════════════════════
-       CORE VALUES — 4-CARD GRID
-  ═══════════════════════════════════════════ -->
-  <section class="catalogue" id="about" aria-labelledby="valuesHeading">
-
-    <div class="catalogue__status">
-      <p class="catalogue__status-text" id="valuesHeading">Our Promise · 4 Pillars</p>
-    </div>
-
-    <div class="product-grid" role="list">
-
-      <!-- Card 1 — Kimana Town -->
-      <article class="product-card product-card--visible" role="listitem">
-        <div class="product-card__media" aria-hidden="true">
-          <div class="product-card__img-wrap img-error">
-            <div class="product-card__img-fallback">📍</div>
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80"
+              alt="Nike Mercurial Vapor — Speed boot in black and volt"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag">Bestseller</span>
           </div>
-        </div>
-        <div class="product-card__info">
-          <h2 class="product-card__name">Kimana Town</h2>
-          <div class="product-card__price">Local</div>
-          <p style="font-size:13px;color:var(--ink-50);line-height:1.65;margin-top:4px;">
-            Rooted in Oloitokitok Sub-County, delivering across Kajiado County and beyond.
-          </p>
-          <div class="product-card__actions" style="margin-top:auto;padding-top:14px;">
-            <a class="product-card__buy" href="catalogue.html" style="text-decoration:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Shop Now
-            </a>
+          <div class="card-body">
+            <p class="card-category">Speed Boots · FG</p>
+            <h3 class="card-name">Nike Mercurial Vapor</h3>
+            <p class="card-detail">Explosive speed, feather-light upper. Available in UK 6–12.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Nike Mercurial Vapor (Speed Boot, FG)">
+                Chat with Expert
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Card 2 — WhatsApp Checkout -->
-      <article class="product-card product-card--visible" role="listitem" style="animation-delay:0.08s">
-        <div class="product-card__media" aria-hidden="true">
-          <div class="product-card__img-wrap img-error">
-            <div class="product-card__img-fallback">💬</div>
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1608231387042-66d1773d3028?w=600&q=80"
+              alt="Adidas Predator Elite — Control boot"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--new">New In</span>
           </div>
-        </div>
-        <div class="product-card__info">
-          <h2 class="product-card__name">WhatsApp Checkout</h2>
-          <div class="product-card__price">Zero Friction</div>
-          <p style="font-size:13px;color:var(--ink-50);line-height:1.65;margin-top:4px;">
-            Your cart compiles into a clean WhatsApp message. Confirm your order in one tap.
-          </p>
-          <div class="product-card__actions" style="margin-top:auto;padding-top:14px;">
-            <a class="product-card__buy" href="https://wa.me/254702453813" target="_blank"
-               rel="noopener noreferrer" style="text-decoration:none;">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              Chat Us
-            </a>
+          <div class="card-body">
+            <p class="card-category">Control Boots · AG</p>
+            <h3 class="card-name">Adidas Predator Elite</h3>
+            <p class="card-detail">Zone skin zones amplify touch and shot accuracy. UK 6–13.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Adidas Predator Elite (Control Boot, AG)">
+                Chat with Expert
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Card 3 — M-Pesa -->
-      <article class="product-card product-card--visible" role="listitem" style="animation-delay:0.16s">
-        <div class="product-card__media" aria-hidden="true">
-          <div class="product-card__img-wrap img-error">
-            <div class="product-card__img-fallback">📱</div>
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=600&q=80"
+              alt="Puma Future Ultimate — Turf boot"
+              loading="lazy"
+              class="card-img"
+            />
           </div>
-        </div>
-        <div class="product-card__info">
-          <h2 class="product-card__name">M-Pesa Built-in</h2>
-          <div class="product-card__price">Accepted</div>
-          <p style="font-size:13px;color:var(--ink-50);line-height:1.65;margin-top:4px;">
-            Pay via M-Pesa, cash on delivery, or arrange directly with our team on WhatsApp.
-          </p>
-          <div class="product-card__actions" style="margin-top:auto;padding-top:14px;">
-            <a class="product-card__buy" href="catalogue.html" style="text-decoration:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Start Order
-            </a>
+          <div class="card-body">
+            <p class="card-category">All-Surface · TF</p>
+            <h3 class="card-name">Puma Future Ultimate</h3>
+            <p class="card-detail">FUZIONFIT compression band locks in for relentless turf grip.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Puma Future Ultimate (All-Surface, TF)">
+                Chat with Expert
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- Card 4 — Fast Delivery -->
-      <article class="product-card product-card--visible" role="listitem" style="animation-delay:0.24s">
-        <div class="product-card__media" aria-hidden="true">
-          <div class="product-card__img-wrap img-error">
-            <div class="product-card__img-fallback">🚚</div>
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1600185365778-5ae50bc2dd9e?w=600&q=80"
+              alt="New Balance Furon v7 Pro — Mid-range boot"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--sale">Sale</span>
           </div>
-        </div>
-        <div class="product-card__info">
-          <h2 class="product-card__name">Fast Delivery</h2>
-          <div class="product-card__price">48hr</div>
-          <p style="font-size:13px;color:var(--ink-50);line-height:1.65;margin-top:4px;">
-            Same-day delivery within Kimana. 24-hour dispatch to the wider Kajiado region.
-          </p>
-          <div class="product-card__actions" style="margin-top:auto;padding-top:14px;">
-            <a class="product-card__buy" href="catalogue.html" style="text-decoration:none;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                   width="14" height="14" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Browse Kits
-            </a>
+          <div class="card-body">
+            <p class="card-category">Pro Speed · FG/AG</p>
+            <h3 class="card-name">New Balance Furon v7</h3>
+            <p class="card-detail">Sculpted last with responsive Pebax outsole. Dual surface.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="New Balance Furon v7 Pro (Speed Boot, FG/AG)">
+                Chat with Expert
+              </a>
+            </div>
           </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CALLOUT STRIP — CUSTOM KIT
+    ═══════════════════════════════════════════ -->
+    <section class="callout-strip" aria-label="Custom kit printing callout">
+      <div class="callout-inner">
+        <div class="callout-text">
+          <p class="callout-eyebrow">Custom Kit Studio</p>
+          <h2 class="callout-title">Your Club.<br />Your Colors.<br />Your Name.</h2>
+          <p class="callout-body">Full sublimation printing for club kits, school teams, and corporate sports events. Minimum 5 units. Fast turnaround.</p>
         </div>
-      </article>
+        <a
+          href="#"
+          class="btn btn--primary callout-cta"
+          data-product="Custom Kit Printing enquiry"
+          id="customKitBtn"
+        >
+          Get a Kit Quote
+        </a>
+      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ═══════════════════════════════════════════
+         SECTION: CLUB KITS
+    ═══════════════════════════════════════════ -->
+    <section class="showroom-section" id="kits" aria-labelledby="kits-heading">
+      <div class="section-header">
+        <p class="section-eyebrow">Category 02</p>
+        <h2 class="section-title" id="kits-heading">Club Kits</h2>
+        <p class="section-desc">Match-ready jerseys and training sets — standard stock or fully custom printed with your badge and name.</p>
+      </div>
+      <div class="product-grid">
 
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1617042375876-a13e36732a04?w=600&q=80"
+              alt="Barcelona Home Jersey 24/25"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag">Club Kit</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Replica · S–3XL</p>
+            <h3 class="card-name">Barcelona Home 24/25</h3>
+            <p class="card-detail">Official Dri-FIT ADV fabric. Name and number printing available.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Barcelona Home Jersey 24/25">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1521412644187-c49fa049e84d?w=600&q=80"
+              alt="Custom sublimation training kit in black"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--new">Custom Print</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Custom · Full Sublimation</p>
+            <h3 class="card-name">BSC Custom Training Set</h3>
+            <p class="card-detail">Jersey + shorts + socks. Your logo, your palette. From 5 units.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="BSC Custom Training Set (Full Sublimation, min 5 units)">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=600&q=80"
+              alt="Manchester City Away kit"
+              loading="lazy"
+              class="card-img"
+            />
+          </div>
+          <div class="card-body">
+            <p class="card-category">Replica · S–2XL</p>
+            <h3 class="card-name">Man City Away Kit</h3>
+            <p class="card-detail">Season 24/25. Erling Haaland edition. Name-print service available.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Manchester City Away Kit 24/25">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1614632537197-38a17061c2bd?w=600&q=80"
+              alt="Real Madrid home jersey"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--sale">Low Stock</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Replica · S–XXL</p>
+            <h3 class="card-name">Real Madrid Home Kit</h3>
+            <p class="card-detail">Classic white, season 24/25. Heat-press name and number printing.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Real Madrid Home Kit 24/25">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SECTION: PRO GEAR
+    ═══════════════════════════════════════════ -->
+    <section class="showroom-section" id="gear" aria-labelledby="gear-heading">
+      <div class="section-header">
+        <p class="section-eyebrow">Category 03</p>
+        <h2 class="section-title" id="gear-heading">Pro Gear</h2>
+        <p class="section-desc">Training equipment, accessories, and protective gear for the full performance stack.</p>
+      </div>
+      <div class="product-grid">
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80"
+              alt="Nike Strike football — match-grade ball"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag">Match Ball</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Match Equipment</p>
+            <h3 class="card-name">Nike Strike Pro Ball</h3>
+            <p class="card-detail">Visual Power graphic for high-speed visibility. Sizes 3–5.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Nike Strike Pro Ball (Match Equipment)">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=600&q=80"
+              alt="Goalkeeper gloves — Adidas Predator"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--new">GK Special</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Goalkeeper · Sizes 6–11</p>
+            <h3 class="card-name">Adidas Predator GL</h3>
+            <p class="card-detail">CONTACTGRIP foam for dominant shot-stopping. Negative cut.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Adidas Predator GL Goalkeeper Gloves">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80"
+              alt="Training cones and agility ladder set"
+              loading="lazy"
+              class="card-img"
+            />
+          </div>
+          <div class="card-body">
+            <p class="card-category">Training Equipment</p>
+            <h3 class="card-name">Agility Training Bundle</h3>
+            <p class="card-detail">Cones, speed ladder, resistance bands — full preseason kit.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Agility Training Bundle (Cones, Ladder, Resistance Bands)">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="card-img-wrap">
+            <img
+              src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=600&q=80"
+              alt="Sports bag — gym and kit carrier"
+              loading="lazy"
+              class="card-img"
+            />
+            <span class="card-tag card-tag--sale">Sale</span>
+          </div>
+          <div class="card-body">
+            <p class="card-category">Accessories</p>
+            <h3 class="card-name">Pro Kit Holdall Bag</h3>
+            <p class="card-detail">Ventilated shoe compartment, 50L capacity. Multiple colorways.</p>
+            <div class="card-actions">
+              <a href="https://wa.me/c/254702453813" class="card-btn card-btn--catalog" target="_blank" rel="noopener noreferrer">
+                View in WhatsApp Catalog
+              </a>
+              <a href="#" class="card-btn card-btn--consult" data-product="Pro Kit Holdall Bag (50L Sports Bag)">
+                Chat with Expert
+              </a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         TRUST STRIP
+    ═══════════════════════════════════════════ -->
+    <section class="trust-strip" aria-label="Why Baari Sports Center">
+      <div class="trust-inner">
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✦</span>
+          <h3 class="trust-title">Custom Printing</h3>
+          <p class="trust-body">Full sublimation, heat-press, and embroidery. Your badge, your name.</p>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✦</span>
+          <h3 class="trust-title">Group Orders</h3>
+          <p class="trust-body">School teams, clubs, corporates. Bulk pricing available from 5 units.</p>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✦</span>
+          <h3 class="trust-title">Expert Sizing</h3>
+          <p class="trust-body">Chat our boot and kit specialists before you commit. No guesswork.</p>
+        </div>
+        <div class="trust-item">
+          <span class="trust-icon" aria-hidden="true">✦</span>
+          <h3 class="trust-title">Fast Checkout</h3>
+          <p class="trust-body">Order via WhatsApp. Confirm, pay, collect — no friction.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <!-- ═══════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="footer__inner">
-      <div class="footer__brand">
-        <div class="nav__logo-mark" aria-hidden="true">BSC</div>
-        <div class="nav__logo-text">
-          <span class="nav__logo-name">BAARI SPORTS CENTER</span>
-          <span class="nav__logo-loc">Digital Shelves · Kimana Town</span>
-        </div>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">BSC</span>
+        <p class="footer-tagline">Baari Sports Center<br />Kimana Town, Kajiado County</p>
       </div>
-      <p class="footer__copy">
-        © 2025 Baari Sports Center. Architected by <strong>Flynn Technologies</strong>
-      </p>
+      <div class="footer-links">
+        <a href="#boots" class="footer-link">Boots</a>
+        <a href="#kits" class="footer-link">Club Kits</a>
+        <a href="#gear" class="footer-link">Pro Gear</a>
+        <a href="https://wa.me/c/254702453813" class="footer-link" target="_blank" rel="noopener noreferrer">WhatsApp Shop</a>
+      </div>
+      <p class="footer-copy">© 2025 Baari Sports Center · Built by Flynn Technologies</p>
     </div>
   </footer>
 
-
   <!-- ═══════════════════════════════════════════
-       CART DRAWER
+       FLOATING CONSULT WIDGET
   ═══════════════════════════════════════════ -->
-  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
-
-  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true" aria-label="Kit Bag">
-
-    <!-- Drawer header -->
-    <div class="cart-drawer__head">
-      <h2 class="cart-drawer__title">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-             aria-hidden="true">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
-        </svg>
-        Kit Bag
-        <span class="cart-drawer__count" id="cartItemCount">0 items</span>
-      </h2>
-      <button class="cart-drawer__close" id="cartClose" aria-label="Close kit bag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-             aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-
-    <!-- Drawer body -->
-    <div class="cart-drawer__body" id="cartBody">
-      <div class="cart-empty" id="cartEmpty">
-        <div class="cart-empty__icon" aria-hidden="true">⚽</div>
-        <p class="cart-empty__msg">Your kit bag is empty.</p>
-        <p class="cart-empty__sub">Browse the Jersey Locker and add kits to get started.</p>
+  <div class="consult-widget" id="consultWidget" aria-live="polite">
+    <button class="consult-trigger" id="consultTrigger" aria-label="Open WhatsApp chat" aria-expanded="false">
+      <svg class="consult-wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      <span class="consult-trigger-label">Chat Expert</span>
+      <span class="consult-pulse" aria-hidden="true"></span>
+    </button>
+    <div class="consult-panel" id="consultPanel" aria-hidden="true" role="dialog" aria-label="WhatsApp consultation">
+      <div class="panel-header">
+        <div class="panel-avatar" aria-hidden="true">
+          <span>BSC</span>
+        </div>
+        <div class="panel-meta">
+          <p class="panel-name">Baari Sports Center</p>
+          <p class="panel-status"><span class="status-dot" aria-hidden="true"></span>Online · Typically replies fast</p>
+        </div>
+        <button class="panel-close" id="panelClose" aria-label="Close chat panel">✕</button>
       </div>
-      <ul class="cart-list" id="cartList" aria-label="Items in your kit bag"></ul>
-    </div>
-
-    <!-- Drawer footer -->
-    <div class="cart-drawer__foot">
-      <div class="cart-subtotal">
-        <span class="cart-subtotal__label">Subtotal</span>
-        <span class="cart-subtotal__amount" id="cartSubtotal">Ksh 0</span>
+      <div class="panel-body">
+        <div class="panel-bubble">
+          <p>👋 Need custom kit printing or size advice? Let's chat gear!</p>
+        </div>
+        <div class="panel-bubble panel-bubble--sub">
+          <p>Tell us what you're after and we'll sort it out fast.</p>
+        </div>
       </div>
-      <p class="cart-delivery-note">🚚 Delivery fee confirmed on WhatsApp</p>
-      <button class="checkout-btn" id="checkoutBtn" disabled>
-        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-        💬 Complete Order on WhatsApp
-      </button>
+      <div class="panel-actions">
+        <a
+          href="#"
+          class="panel-btn"
+          id="panelChatBtn"
+          data-product="general enquiry"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+          Start WhatsApp Chat
+        </a>
+      </div>
     </div>
-
-  </aside>
-
-
-  <!-- ═══════════════════════════════════════════
-       WHATSAPP FAB
-  ═══════════════════════════════════════════ -->
-  <a href="https://wa.me/254702453813"
-     class="wa-fab"
-     id="waFab"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="Chat with us on WhatsApp">
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-    </svg>
-    <span>Chat</span>
-  </a>
-
-
-  <!-- ═══════════════════════════════════════════
-       MOBILE FLOATING CART
-  ═══════════════════════════════════════════ -->
-  <button class="mob-cart" id="mobCart" aria-label="Open kit bag">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
-         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-      <line x1="3" y1="6" x2="21" y2="6"/>
-      <path d="M16 10a4 4 0 01-8 0"/>
-    </svg>
-    <span class="mob-cart__badge" id="mobCartBadge">0</span>
-  </button>
-
-
-  <!-- Toast -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+  </div>
 
   <script src="script.js"></script>
 </body>
