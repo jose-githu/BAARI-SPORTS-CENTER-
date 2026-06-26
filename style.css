@@ -1144,3 +1144,14 @@ h1, h2, h3 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ─── WHATSAPP AVAILABILITY LABEL (replaces price tag) ── */
+.card-wa-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.75;
+  padding: 4px 0 2px;
+}

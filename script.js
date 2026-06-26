@@ -2,7 +2,7 @@
  * Baari Sports Center — script.js
  * Ultra-lean interaction layer. Zero frameworks. Zero state overhead.
  * Responsibilities:
- *   1. WhatsApp intent encoder for all consult CTAs
+ *   1. WhatsApp intent encoder for all consult CTAs and order buttons
  *   2. Floating consult widget show/hide
  *   3. Mobile nav drawer toggle
  *   4. Header scroll shadow
@@ -12,53 +12,64 @@
   'use strict';
 
   /* ─── CONFIG ──────────────────────────────────────────────── */
-  var WA_NUMBER = '254702453813';
-  var WA_BASE   = 'https://wa.me/' + WA_NUMBER;
+  var WA_NUMBER  = '254702453813';
+  var WA_BASE    = 'https://wa.me/' + WA_NUMBER;
   var WA_CATALOG = 'https://wa.me/c/' + WA_NUMBER;
 
   /* ─── WHATSAPP INTENT ENCODER ─────────────────────────────── */
 
   /**
-   * Build a WhatsApp deep-link with a pre-filled message.
-   * @param {string} productLabel - Product name / context string
+   * Build a WhatsApp order/enquiry link with a pre-filled message.
+   * "Order via WhatsApp" buttons use the specific order template.
+   * "Chat with Expert" buttons use the consultation template.
+   * General enquiry (panel, callout) uses the fallback template.
+   *
+   * @param {string} productLabel  - Product name or context string
+   * @param {string} [intent]      - 'order' | 'consult' | undefined (general)
    * @returns {string} Full WhatsApp URL with encoded text param
    */
-  function buildConsultLink(productLabel) {
-    var message = productLabel && productLabel !== 'general enquiry'
-      ? 'Hi Baari Sports Center! I\u2019m interested in the *' + productLabel + '*. Could you help me with sizing, availability, and pricing?'
-      : 'Hi Baari Sports Center! I need some help with sizing, kit printing, or a group order. Could we chat?';
+  function buildWALink(productLabel, intent) {
+    var message;
+
+    if (!productLabel || productLabel === 'general enquiry') {
+      message = 'Hi Baari Sports Center! I need some help with sizing, kit printing, or a group order. Could we chat?';
+    } else if (intent === 'order') {
+      // Primary CTA — specific order intent message
+      message = 'Hello Baari Sports, I\u2019m interested in the ' + productLabel + ' from your website. Can you share the price and availability?';
+    } else {
+      // Expert consult — friendly sizing / advice framing
+      message = 'Hi Baari Sports Center! I\u2019m interested in the *' + productLabel + '*. Could you help me with sizing, availability, and pricing?';
+    }
+
     return WA_BASE + '?text=' + encodeURIComponent(message);
   }
 
-  /**
-   * Resolve the correct WhatsApp link for a given trigger element.
-   * Elements with [data-product] get a personalized consult link.
-   * Elements without it fall back to the catalog URL.
-   * @param {HTMLElement} el
-   * @returns {string}
-   */
-  function resolveLink(el) {
-    var product = el.getAttribute('data-product');
-    if (product !== null) {
-      return buildConsultLink(product);
-    }
-    return WA_CATALOG;
-  }
-
-  /* ─── CONSULT CTA DELEGATION ──────────────────────────────── */
-  // Single delegated listener on document — handles all current and
-  // dynamically-added consult buttons without looping over them.
+  /* ─── DELEGATED CLICK HANDLER FOR ALL PRODUCT BUTTONS ─────── */
+  // Single listener on document handles all current and future cards.
+  // Differentiates "order" vs "consult" by the btn class on the element.
   document.addEventListener('click', function (e) {
+    // Walk up from click target to find a [data-product] ancestor
     var target = e.target.closest('[data-product]');
     if (!target) return;
 
-    // Only intercept anchor tags and buttons; let native links through
-    // if they already point somewhere other than '#'
+    // Only intercept elements that don't already navigate elsewhere
     var href = target.getAttribute('href');
     if (href && href !== '#' && !href.startsWith('javascript')) return;
 
     e.preventDefault();
-    var link = buildConsultLink(target.getAttribute('data-product'));
+
+    var productLabel = target.getAttribute('data-product');
+
+    // Determine intent: "Order via WhatsApp" vs "Chat with Expert"
+    var intent = 'consult'; // default
+    if (
+      target.classList.contains('card-btn--catalog') ||
+      target.classList.contains('callout-cta')
+    ) {
+      intent = 'order';
+    }
+
+    var link = buildWALink(productLabel, intent);
     window.open(link, '_blank', 'noopener,noreferrer');
   });
 
@@ -83,11 +94,7 @@
   }
 
   function togglePanel() {
-    if (panelOpen) {
-      closePanel();
-    } else {
-      openPanel();
-    }
+    if (panelOpen) { closePanel(); } else { openPanel(); }
   }
 
   if (trigger) {
@@ -104,11 +111,11 @@
     });
   }
 
-  // Wire the panel's chat button to the general consult encoder
+  // Wire the panel's chat button to the general enquiry encoder
   if (panelChat) {
     panelChat.addEventListener('click', function (e) {
       e.preventDefault();
-      var link = buildConsultLink('general enquiry');
+      var link = buildWALink('general enquiry');
       closePanel();
       window.open(link, '_blank', 'noopener,noreferrer');
     });
@@ -118,9 +125,7 @@
   document.addEventListener('click', function (e) {
     if (!panelOpen) return;
     var widget = document.getElementById('consultWidget');
-    if (widget && !widget.contains(e.target)) {
-      closePanel();
-    }
+    if (widget && !widget.contains(e.target)) { closePanel(); }
   });
 
   // Close panel on Escape key
@@ -132,23 +137,20 @@
   });
 
   /* ─── AUTO-REVEAL WIDGET ON SCROLL ───────────────────────── */
-  // Widget starts visible; this logic can add a reveal-on-scroll
-  // behaviour if desired — currently kept as passive scroll tracking.
   var hasScrolled = false;
 
   window.addEventListener('scroll', function () {
     if (hasScrolled) return;
     if (window.scrollY > 300) {
       hasScrolled = true;
-      // Optionally auto-expand panel after first significant scroll
-      // openPanel(); — disabled by default; uncomment if desired
+      // openPanel(); — disabled by default; uncomment to auto-expand
     }
   }, { passive: true });
 
   /* ─── MOBILE NAV DRAWER ───────────────────────────────────── */
-  var navToggle      = document.getElementById('navToggle');
-  var mobileDrawer   = document.getElementById('mobileDrawer');
-  var drawerOpen     = false;
+  var navToggle    = document.getElementById('navToggle');
+  var mobileDrawer = document.getElementById('mobileDrawer');
+  var drawerOpen   = false;
 
   function openDrawer() {
     mobileDrawer.setAttribute('aria-hidden', 'false');
@@ -176,9 +178,7 @@
   // Close drawer when a drawer link is tapped
   if (mobileDrawer) {
     mobileDrawer.querySelectorAll('.drawer-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        closeDrawer();
-      });
+      link.addEventListener('click', function () { closeDrawer(); });
     });
   }
 
