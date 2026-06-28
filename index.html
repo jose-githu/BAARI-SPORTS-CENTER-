@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+5<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -38,11 +38,22 @@
         <span></span><span></span><span></span>
       </button>
     </nav>
-    <div class="nav-mobile-drawer" id="mobileDrawer" aria-hidden="true">
-      <a href="#apparel" class="drawer-link">Apparel &amp; Kits</a>
-      <a href="#footwear" class="drawer-link">Footwear &amp; Protection</a>
-      <a href="#equipment" class="drawer-link">Equipment</a>
-      <a href="https://wa.me/c/254702453813" class="drawer-link drawer-link--cta" target="_blank" rel="noopener noreferrer">Shop WhatsApp Catalog →</a>
+
+    <!-- UPDATE 2: Overlay backdrop -->
+    <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+
+    <!-- UPDATE 2: Right-side slide drawer -->
+    <div class="nav-mobile-drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-label="Navigation menu">
+      <div class="drawer-header">
+        <span class="drawer-header-brand">Baari Sports Center</span>
+        <button class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close navigation menu">✕</button>
+      </div>
+      <div class="drawer-links-list">
+        <a href="#apparel" class="drawer-link">Apparel &amp; Kits</a>
+        <a href="#footwear" class="drawer-link">Footwear &amp; Protection</a>
+        <a href="#equipment" class="drawer-link">Equipment</a>
+        <a href="https://wa.me/c/254702453813" class="drawer-link drawer-link--cta" target="_blank" rel="noopener noreferrer">Shop WhatsApp Catalog →</a>
+      </div>
     </div>
   </header>
 
@@ -70,7 +81,7 @@
             rel="noopener noreferrer"
           >
             <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-            Explore Full WhatsApp Catalog
+            SHOP NOW
           </a>
           <a href="#apparel" class="btn btn--ghost">View Showroom ↓</a>
         </div>
@@ -125,7 +136,7 @@
     ═══════════════════════════════════════════ -->
     <section class="showroom-section" id="apparel" aria-labelledby="apparel-heading">
       <div class="section-header">
-        <p class="section-eyebrow">Category 01</p>
+        <p class="section-eyebrow"></p>
         <h2 class="section-title" id="apparel-heading">Apparel &amp; Kits</h2>
         <p class="section-desc">Match-ready jerseys, tracksuits, and full club kits — standard stock or custom printed with your badge and name.</p>
       </div>
@@ -321,7 +332,7 @@
     ═══════════════════════════════════════════ -->
     <section class="showroom-section" id="footwear" aria-labelledby="footwear-heading">
       <div class="section-header">
-        <p class="section-eyebrow">Category 02</p>
+        <p class="section-eyebrow"></p>
         <h2 class="section-title" id="footwear-heading">Footwear &amp; Protective Gear</h2>
         <p class="section-desc">From firm ground to artificial turf — performance boots, sport shoes, and protective essentials for every level.</p>
       </div>
@@ -496,7 +507,7 @@
     ═══════════════════════════════════════════ -->
     <section class="showroom-section" id="equipment" aria-labelledby="equipment-heading">
       <div class="section-header">
-        <p class="section-eyebrow">Category 03</p>
+        <p class="section-eyebrow"></p>
         <h2 class="section-title" id="equipment-heading">Equipment &amp; Field Essentials</h2>
         <p class="section-desc">Training equipment, match balls, and field gear for the complete performance setup.</p>
       </div>
@@ -666,6 +677,32 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         WHATSAPP CATALOG SECTION
+    ═══════════════════════════════════════════ -->
+    <section class="wa-catalog-section" aria-label="Browse full WhatsApp catalog">
+      <div class="wa-catalog-inner">
+        <svg class="wa-catalog-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+        </svg>
+        <h2 class="wa-catalog-title">Explore Our Full Live Collection</h2>
+        <p class="wa-catalog-sub">Can't find your specific item or sizing? Browse our entire active inventory directly on our official WhatsApp Catalog.</p>
+        <a
+          href="https://wa.me/c/254702453813"
+          class="wa-catalog-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+            <path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/>
+          </svg>
+          Shop With Us
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          TRUST STRIP
     ═══════════════════════════════════════════ -->
     <section class="trust-strip" aria-label="Why Baari Sports Center">
@@ -715,47 +752,51 @@
   </footer>
 
   <!-- ═══════════════════════════════════════════
-       FLOATING CONSULT WIDGET
+       UPDATE 3 — WHATSAPP FAB + INTERACTIVE DIRECTORY
   ═══════════════════════════════════════════ -->
-  <div class="consult-widget" id="consultWidget" aria-live="polite">
-    <button class="consult-trigger" id="consultTrigger" aria-label="Open WhatsApp chat" aria-expanded="false">
+  <div class="consult-widget" id="consultWidget">
+
+    <!-- Directory Card (shown above FAB when toggled) -->
+    <div class="consult-directory" id="consultDirectory" aria-hidden="true" role="dialog" aria-label="WhatsApp enquiry options">
+      <div class="directory-header">
+        <div class="directory-avatar" aria-hidden="true">BSC</div>
+        <div class="directory-meta">
+          <p class="directory-name">Baari Sports Center</p>
+          <p class="directory-status">
+            <span class="status-dot" aria-hidden="true"></span>
+            Online · Replies fast
+          </p>
+        </div>
+        <button class="directory-close" id="directoryClose" aria-label="Close enquiry menu">✕</button>
+      </div>
+      <p class="directory-prompt">How can we help you today?</p>
+      <div class="directory-list">
+        <button class="directory-btn" data-wa-intent="Order a Jersey / Kit">
+          <span class="directory-btn-emoji">🛍️</span>
+          Order a Jersey / Kit
+        </button>
+        <button class="directory-btn" data-wa-intent="Check Available Boot Sizes">
+          <span class="directory-btn-emoji">👟</span>
+          Check Available Boot Sizes
+        </button>
+        <button class="directory-btn" data-wa-intent="Custom Team Wear Designs">
+          <span class="directory-btn-emoji">🎨</span>
+          Custom Team Wear Designs
+        </button>
+        <button class="directory-btn" data-wa-intent="Shipping &amp; Delivery Question">
+          <span class="directory-btn-emoji">🚚</span>
+          Shipping &amp; Delivery Question
+        </button>
+      </div>
+    </div>
+
+    <!-- FAB Trigger -->
+    <button class="consult-trigger" id="consultTrigger" aria-label="Open WhatsApp enquiry menu" aria-expanded="false">
       <svg class="consult-wa-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
       <span class="consult-trigger-label">Chat Expert</span>
       <span class="consult-pulse" aria-hidden="true"></span>
     </button>
-    <div class="consult-panel" id="consultPanel" aria-hidden="true" role="dialog" aria-label="WhatsApp consultation">
-      <div class="panel-header">
-        <div class="panel-avatar" aria-hidden="true">
-          <span>BSC</span>
-        </div>
-        <div class="panel-meta">
-          <p class="panel-name">Baari Sports Center</p>
-          <p class="panel-status"><span class="status-dot" aria-hidden="true"></span>Online · Typically replies fast</p>
-        </div>
-        <button class="panel-close" id="panelClose" aria-label="Close chat panel">✕</button>
-      </div>
-      <div class="panel-body">
-        <div class="panel-bubble">
-          <p>👋 Need custom kit printing or size advice? Let's chat gear!</p>
-        </div>
-        <div class="panel-bubble panel-bubble--sub">
-          <p>Tell us what you're after and we'll sort it out fast.</p>
-        </div>
-      </div>
-      <div class="panel-actions">
-        <a
-          href="#"
-          class="panel-btn"
-          id="panelChatBtn"
-          data-product="general enquiry"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.553 4.116 1.525 5.845L0 24l6.335-1.502A11.946 11.946 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.793 9.793 0 0 1-5.006-1.374l-.359-.214-3.76.892.944-3.666-.234-.376A9.793 9.793 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
-          Start WhatsApp Chat
-        </a>
-      </div>
-    </div>
+
   </div>
 
   <script src="script.js"></script>

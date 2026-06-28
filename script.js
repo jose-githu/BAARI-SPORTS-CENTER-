@@ -1,11 +1,16 @@
 /**
  * Baari Sports Center — script.js
- * Ultra-lean interaction layer. Zero frameworks. Zero state overhead.
- * Responsibilities:
- *   1. WhatsApp intent encoder for all consult CTAs and order buttons
- *   2. Floating consult widget show/hide
- *   3. Mobile nav drawer toggle
- *   4. Header scroll shadow
+ * Zero frameworks. Zero state overhead.
+ *
+ * Updates applied:
+ *   1. GPU-smooth horizontal scroll — handled entirely in CSS (will-change, -webkit-overflow-scrolling)
+ *   2. Right-side slide-in nav drawer with dark overlay + close on overlay tap / Escape
+ *   3. FAB → interactive directory card → intent-routed pre-filled WhatsApp links
+ *
+ * Original behaviours retained:
+ *   - Delegated product card WA encoder
+ *   - Header scroll shadow
+ *   - Smooth anchor close
  */
 
 (function () {
@@ -17,40 +22,41 @@
   var WA_CATALOG = 'https://wa.me/c/' + WA_NUMBER;
 
   /* ─── WHATSAPP INTENT ENCODER ─────────────────────────────── */
-
   /**
-   * Build a WhatsApp order/enquiry link with a pre-filled message.
-   * "Order via WhatsApp" buttons use the specific order template.
-   * "Chat with Expert" buttons use the consultation template.
-   * General enquiry (panel, callout) uses the fallback template.
-   *
-   * @param {string} productLabel  - Product name or context string
-   * @param {string} [intent]      - 'order' | 'consult' | undefined (general)
-   * @returns {string} Full WhatsApp URL with encoded text param
+   * Build a WhatsApp link with a pre-filled message.
+   * intent === 'directory'  →  directory routing template
+   * intent === 'order'      →  specific order template
+   * intent === 'consult'    →  sizing/advice template
+   * no intent / 'general'   →  fallback template
    */
   function buildWALink(productLabel, intent) {
     var message;
 
     if (!productLabel || productLabel === 'general enquiry') {
       message = 'Hi Baari Sports Center! I need some help with sizing, kit printing, or a group order. Could we chat?';
+    } else if (intent === 'directory') {
+      // Directory card routing — professional, intent-specific phrasing
+      message = 'Hi Baari Sports, I am visiting your storefront and I would like to make an inquiry regarding: ' + productLabel + '.';
     } else if (intent === 'order') {
-      // Primary CTA — specific order intent message
       message = 'Hello Baari Sports, I\u2019m interested in the ' + productLabel + ' from your website. Can you share the price and availability?';
     } else {
-      // Expert consult — friendly sizing / advice framing
+      // consult / expert chat
       message = 'Hi Baari Sports Center! I\u2019m interested in the *' + productLabel + '*. Could you help me with sizing, availability, and pricing?';
     }
 
     return WA_BASE + '?text=' + encodeURIComponent(message);
   }
 
-  /* ─── DELEGATED CLICK HANDLER FOR ALL PRODUCT BUTTONS ─────── */
-  // Single listener on document handles all current and future cards.
-  // Differentiates "order" vs "consult" by the btn class on the element.
+  /* ═══════════════════════════════════════════════════════════
+     DELEGATED CLICK: PRODUCT CARDS & CALLOUT
+  ═══════════════════════════════════════════════════════════ */
   document.addEventListener('click', function (e) {
     // Walk up from click target to find a [data-product] ancestor
     var target = e.target.closest('[data-product]');
     if (!target) return;
+
+    // Directory buttons are handled by their own listener below
+    if (target.classList.contains('directory-btn')) return;
 
     // Only intercept elements that don't already navigate elsewhere
     var href = target.getAttribute('href');
@@ -60,8 +66,8 @@
 
     var productLabel = target.getAttribute('data-product');
 
-    // Determine intent: "Order via WhatsApp" vs "Chat with Expert"
-    var intent = 'consult'; // default
+    // Determine intent by class
+    var intent = 'consult';
     if (
       target.classList.contains('card-btn--catalog') ||
       target.classList.contains('callout-cta')
@@ -69,120 +75,166 @@
       intent = 'order';
     }
 
-    var link = buildWALink(productLabel, intent);
-    window.open(link, '_blank', 'noopener,noreferrer');
+    window.open(buildWALink(productLabel, intent), '_blank', 'noopener,noreferrer');
   });
 
-  /* ─── FLOATING CONSULT WIDGET ─────────────────────────────── */
-  var trigger   = document.getElementById('consultTrigger');
-  var panel     = document.getElementById('consultPanel');
-  var closeBtn  = document.getElementById('panelClose');
-  var panelChat = document.getElementById('panelChatBtn');
-
-  var panelOpen = false;
-
-  function openPanel() {
-    panel.setAttribute('aria-hidden', 'false');
-    trigger.setAttribute('aria-expanded', 'true');
-    panelOpen = true;
-  }
-
-  function closePanel() {
-    panel.setAttribute('aria-hidden', 'true');
-    trigger.setAttribute('aria-expanded', 'false');
-    panelOpen = false;
-  }
-
-  function togglePanel() {
-    if (panelOpen) { closePanel(); } else { openPanel(); }
-  }
-
-  if (trigger) {
-    trigger.addEventListener('click', function (e) {
-      e.stopPropagation();
-      togglePanel();
-    });
-  }
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', function (e) {
-      e.stopPropagation();
-      closePanel();
-    });
-  }
-
-  // Wire the panel's chat button to the general enquiry encoder
-  if (panelChat) {
-    panelChat.addEventListener('click', function (e) {
-      e.preventDefault();
-      var link = buildWALink('general enquiry');
-      closePanel();
-      window.open(link, '_blank', 'noopener,noreferrer');
-    });
-  }
-
-  // Close panel when clicking outside
-  document.addEventListener('click', function (e) {
-    if (!panelOpen) return;
-    var widget = document.getElementById('consultWidget');
-    if (widget && !widget.contains(e.target)) { closePanel(); }
-  });
-
-  // Close panel on Escape key
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panelOpen) {
-      closePanel();
-      if (trigger) trigger.focus();
-    }
-  });
-
-  /* ─── AUTO-REVEAL WIDGET ON SCROLL ───────────────────────── */
-  var hasScrolled = false;
-
-  window.addEventListener('scroll', function () {
-    if (hasScrolled) return;
-    if (window.scrollY > 300) {
-      hasScrolled = true;
-      // openPanel(); — disabled by default; uncomment to auto-expand
-    }
-  }, { passive: true });
-
-  /* ─── MOBILE NAV DRAWER ───────────────────────────────────── */
-  var navToggle    = document.getElementById('navToggle');
-  var mobileDrawer = document.getElementById('mobileDrawer');
-  var drawerOpen   = false;
+  /* ═══════════════════════════════════════════════════════════
+     UPDATE 2 — RIGHT-SIDE NAV DRAWER
+  ═══════════════════════════════════════════════════════════ */
+  var navToggle      = document.getElementById('navToggle');
+  var mobileDrawer   = document.getElementById('mobileDrawer');
+  var navOverlay     = document.getElementById('navOverlay');
+  var drawerCloseBtn = document.getElementById('drawerCloseBtn');
+  var drawerOpen     = false;
 
   function openDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add('drawer-open');
     mobileDrawer.setAttribute('aria-hidden', 'false');
-    navToggle.setAttribute('aria-expanded', 'true');
+    if (navOverlay) {
+      navOverlay.classList.add('is-visible');
+      navOverlay.setAttribute('aria-hidden', 'false');
+    }
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'true');
     drawerOpen = true;
+    // Prevent body scroll while drawer is open
+    document.body.style.overflow = 'hidden';
   }
 
   function closeDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove('drawer-open');
     mobileDrawer.setAttribute('aria-hidden', 'true');
-    navToggle.setAttribute('aria-expanded', 'false');
+    if (navOverlay) {
+      navOverlay.classList.remove('is-visible');
+      navOverlay.setAttribute('aria-hidden', 'true');
+    }
+    if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
     drawerOpen = false;
+    document.body.style.overflow = '';
   }
 
+  // Hamburger toggle
   if (navToggle) {
     navToggle.addEventListener('click', function () {
-      if (drawerOpen) {
-        closeDrawer();
-      } else {
-        openDrawer();
-        closePanel(); // always close consult panel when nav opens
-      }
+      if (drawerOpen) { closeDrawer(); } else { openDrawer(); }
     });
   }
 
-  // Close drawer when a drawer link is tapped
+  // Close via ✕ button inside drawer
+  if (drawerCloseBtn) {
+    drawerCloseBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeDrawer();
+    });
+  }
+
+  // Close when overlay (dark backdrop) is tapped
+  if (navOverlay) {
+    navOverlay.addEventListener('click', function () {
+      closeDrawer();
+    });
+  }
+
+  // Close drawer links (anchor taps)
   if (mobileDrawer) {
     mobileDrawer.querySelectorAll('.drawer-link').forEach(function (link) {
-      link.addEventListener('click', function () { closeDrawer(); });
+      link.addEventListener('click', function () {
+        closeDrawer();
+      });
     });
   }
 
-  /* ─── HEADER SCROLL SHADOW ────────────────────────────────── */
+  // Escape key closes drawer
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (drawerOpen) {
+        closeDrawer();
+        if (navToggle) navToggle.focus();
+      }
+    }
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     UPDATE 3 — FAB + INTERACTIVE DIRECTORY CARD
+  ═══════════════════════════════════════════════════════════ */
+  var consultTrigger  = document.getElementById('consultTrigger');
+  var consultDir      = document.getElementById('consultDirectory');
+  var directoryClose  = document.getElementById('directoryClose');
+  var consultWidget   = document.getElementById('consultWidget');
+  var directoryOpen   = false;
+
+  function openDirectory() {
+    if (!consultDir) return;
+    consultDir.setAttribute('aria-hidden', 'false');
+    if (consultTrigger) consultTrigger.setAttribute('aria-expanded', 'true');
+    directoryOpen = true;
+  }
+
+  function closeDirectory() {
+    if (!consultDir) return;
+    consultDir.setAttribute('aria-hidden', 'true');
+    if (consultTrigger) consultTrigger.setAttribute('aria-expanded', 'false');
+    directoryOpen = false;
+  }
+
+  function toggleDirectory() {
+    if (directoryOpen) { closeDirectory(); } else { openDirectory(); }
+  }
+
+  // FAB tap — toggle directory (does NOT open WA directly)
+  if (consultTrigger) {
+    consultTrigger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      toggleDirectory();
+    });
+  }
+
+  // Close via ✕ inside directory card
+  if (directoryClose) {
+    directoryClose.addEventListener('click', function (e) {
+      e.stopPropagation();
+      closeDirectory();
+    });
+  }
+
+  // Directory option buttons — route to WhatsApp with intent-specific message
+  if (consultDir) {
+    consultDir.querySelectorAll('.directory-btn').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        var intent = btn.getAttribute('data-wa-intent');
+        if (!intent) return;
+
+        // Decode HTML entities (e.g. &amp; → &) from data attribute
+        var decoded = intent.replace(/&amp;/g, '&');
+
+        var link = buildWALink(decoded, 'directory');
+        closeDirectory();
+        window.open(link, '_blank', 'noopener,noreferrer');
+      });
+    });
+  }
+
+  // Close directory when clicking outside the widget
+  document.addEventListener('click', function (e) {
+    if (!directoryOpen) return;
+    if (consultWidget && !consultWidget.contains(e.target)) {
+      closeDirectory();
+    }
+  });
+
+  // Escape key also closes directory
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && directoryOpen) {
+      closeDirectory();
+      if (consultTrigger) consultTrigger.focus();
+    }
+  });
+
+  /* ═══════════════════════════════════════════════════════════
+     HEADER SCROLL SHADOW
+  ═══════════════════════════════════════════════════════════ */
   var header = document.querySelector('.site-header');
 
   if (header) {
@@ -195,11 +247,14 @@
     }, { passive: true });
   }
 
-  /* ─── SMOOTH ANCHOR CLOSE ─────────────────────────────────── */
-  // When any in-page anchor is clicked, close the mobile drawer
+  /* ═══════════════════════════════════════════════════════════
+     SMOOTH ANCHOR CLOSE
+     Close both drawer and directory when in-page anchors are tapped
+  ═══════════════════════════════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function () {
       if (drawerOpen) closeDrawer();
+      if (directoryOpen) closeDirectory();
     });
   });
 
